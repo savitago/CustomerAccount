@@ -1,0 +1,9 @@
+server:
+  port: 8060
+spring:
+  application:
+    name: customer
+  data:
+    mongodb:
+      database: customer_db
+      port: 27017
