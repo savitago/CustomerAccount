@@ -10,9 +10,9 @@ public class RouteConfig {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder routeLocatorBuilder) {
 
         return routeLocatorBuilder.routes()
-                .route("customer", rt -> rt.path("/customer/**")
+                .route("demo", rt -> rt.path("/customer/**")
                         .uri("http://localhost:8060/"))
-                .route("account-sql", rt -> rt.path("/account/**")
+                .route("account", rt -> rt.path("/account/**")
                         .uri("http://localhost:8065/"))
                 .build();
     }

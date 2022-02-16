@@ -2,7 +2,7 @@ server:
   port: 8060
 spring:
   application:
-    name: customer
+    name: demo
   data:
     mongodb:
       database: customer_db
