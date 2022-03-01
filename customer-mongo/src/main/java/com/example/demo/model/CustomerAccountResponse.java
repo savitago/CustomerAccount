@@ -6,6 +6,6 @@ import java.util.List;
 
 @Data
 public class CustomerAccountResponse {
-    private Customer customer;
-    private List<Account> accounts;
+    private CustomerDTO customer;
+    private List<AccountDTO> accounts;
 }

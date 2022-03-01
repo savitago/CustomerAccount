@@ -1,5 +1,4 @@
 package com.example.demo.exception;
-
 import com.example.demo.model.ApiError;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -57,7 +56,7 @@ public class CustomerServiceExceptionHandler extends ResponseEntityExceptionHand
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatus status,
                                                                   WebRequest request) {
-        List<String> errors = new ArrayList<String>();
+        List<String> errors = new ArrayList<>();
         for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
             errors.add(fieldError.getField() + " : " + fieldError.getDefaultMessage());
         }

@@ -28,7 +28,7 @@ public class AccountServiceExceptionHandler extends ResponseEntityExceptionHandl
         apiError.setMessage(exception.getMessage());
         apiError.setPath(request.getDescription(false));
         apiError.setTimestamp(LocalDateTime.now());
-        return new ResponseEntity<ApiError>(apiError, HttpStatus.EXPECTATION_FAILED);
+        return new ResponseEntity<>(apiError, HttpStatus.EXPECTATION_FAILED);
     }
 
     @ExceptionHandler({AccountNotFoundException.class})
@@ -46,7 +46,7 @@ public class AccountServiceExceptionHandler extends ResponseEntityExceptionHandl
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatus status,
                                                                   WebRequest request) {
-        List<String> errors = new ArrayList<String>();
+        List<String> errors = new ArrayList<>();
         for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
             errors.add(fieldError.getField() + " : " + fieldError.getDefaultMessage());
         }
