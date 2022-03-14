@@ -1096,3 +1096,5 @@ Caused by: java.net.SocketTimeoutException: connect timed out
 2022-03-14 15:31:27.735  INFO [account-sql,,] 22412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2022-03-14 15:36:27.746  INFO [account-sql,,] 22412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2022-03-14 15:41:27.752  INFO [account-sql,,] 22412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-03-14 15:46:27.759  INFO [account-sql,,] 22412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-03-14 15:51:27.765  INFO [account-sql,,] 22412 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
