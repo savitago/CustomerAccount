@@ -1,4 +1,5 @@
 package com.example.demo.service;
+
 import com.example.demo.exception.AccountNotFoundException;
 import com.example.demo.exception.CustomerNotActiveException;
 import com.example.demo.model.Account;
@@ -11,9 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -51,18 +52,17 @@ public class AccountServiceImpl implements AccountService {
     public ResponseEntity<List<AccountDTO>> getAllAccounts() {
         try {
             log.info("retrieving list of accounts");
-            List<AccountDTO> accountDTOs = new ArrayList<>();
-            for (Account acc : accountRepo.findAll()) {
-                accountDTOs.add(new AccountDTO(acc));
-            }
+            List<AccountDTO> allAccountDTOs = accountRepo.findAll().stream()
+                    .map((acc) -> new AccountDTO(acc))
+                    .collect(Collectors.toList());
 
-            if (accountDTOs.isEmpty()) {
+            if (allAccountDTOs.isEmpty()) {
                 log.info("list of accounts is empty");
                 return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
             }
 
             log.info("list of accounts retrieved");
-            return new ResponseEntity<>(accountDTOs, HttpStatus.OK);
+            return new ResponseEntity<>(allAccountDTOs, HttpStatus.OK);
         } catch (Exception e) {
             log.error(e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -73,10 +73,9 @@ public class AccountServiceImpl implements AccountService {
     public ResponseEntity<List<AccountDTO>> getAccountsById(Integer id) {
         try {
             log.info("retrieving accounts by id - {}", id);
-            List<AccountDTO> allAccountDTOs = new ArrayList<>();
-            for (Account acc : accountRepo.findAllByAccountId(id)) {
-                allAccountDTOs.add(new AccountDTO(acc));
-            }
+            List<AccountDTO> allAccountDTOs = accountRepo.findAllByAccountId(id).stream()
+                    .map((acc) -> new AccountDTO(acc))
+                    .collect(Collectors.toList());
 
             if (allAccountDTOs.isEmpty()) {
                 log.error("no account found for id - {}", id);

@@ -1,24 +1,29 @@
-server:
-  port: 8060
 spring:
-  application:
-    name: customer-mongo
   data:
     mongodb:
       host: localhost
-      database: customer_db
       port: 27017
+      database: Customer
+
+  zipkin:
+    base-url: http://localhost:9411/
+
+  application:
+    name: customer-mongo
+
+
+server:
+  port: 8060
+  management:
+    endpoints:
+      web:
+        exposure:
+          include:
+            - "*"
+      endpoint:
+        health:
+          show-details: always
+
 feign:
   circuitbreaker:
     enabled: true
-  client:
-    config:
-      default:
-        error-decoder: com.example.demo.config.FeignErrorDecoder
-        retryer: com.example.demo.config.CustomerFeignClientRetryer
-        connectTimeout: 60000
-        readTimeout: 60000
-logging:
-  file:
-    name: C:/Users/savitago/Downloads/demo/account-sql/src/Logs/logs.log
-
